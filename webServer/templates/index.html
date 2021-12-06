@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../static/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    </head>
+    <body>
+
+        <script> 
+
+            $(function(){
+                            window.setInterval(function(){
+                                loadNewData()
+                            }, 5000)
+                        
+            
+                        function loadNewData(){
+                            $.ajax({
+                                url:"/internalcall",
+                                type:"POST",
+                                dataType:"json",
+                                success: function(data){
+                                 console.log(data)
+                                 //data here is the new json diction. So we use the dot notation to index the values that we want
+                                   $(Sus).attr("style", data.bannedUsers)
+                                   //$(BannedUsers).replaceWith(data.bannedUsers)
+                                   //console.log(data.url)
+                                   //console.log(data.title)
+                                }
+                            });
+                        }
+            
+                        });
+                  
+            </script>
+            
+
+
+        <h1>Twitch sus Meter</h1>
+        <br>
+        <h2>ArkeyanMetalman's chat is pretty</h2>
+        <h2 id=Sus style="font-size: 12px;">sus</h2>  
+
+        <h3 id=BannedUsers></h3>
+    </body>
+</html>
